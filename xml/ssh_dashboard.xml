@@ -1,0 +1,115 @@
+<form>
+  <label>SSH Log Analysis Dashboard</label>
+  <description>SOC Analyst Dashboard — SSH Authentication Monitoring &amp; Brute Force Detection</description>
+
+  <!-- ==================== INPUT: Time Range ==================== -->
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: Authentication Overview ==================== -->
+  <row>
+    <panel>
+      <title>Total SSH Events</title>
+      <single>
+        <search>
+          <query>source="ssh_logs.json" host="LinuxServer" sourcetype="_json"
+| stats count AS "Total SSH Events"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Successful Logins</title>
+      <single>
+        <search>
+          <query>source="ssh_logs.json" host="LinuxServer" sourcetype="_json" event_type="Successful SSH Login"
+| stats count AS "Successful Logins"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Failed Logins</title>
+      <single>
+        <search>
+          <query>source="ssh_logs.json" host="LinuxServer" sourcetype="_json" event_type="Failed SSH Login"
+| stats count AS "Failed Login"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Invalid User Attempts</title>
+      <single>
+        <search>
+          <query>index=auth "sshd" "invalid user"
+| stats count AS "Invalid User Attempts"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: Login Activity Trends ==================== -->
+  <row>
+    <panel>
+      <title>Failed Logins by username</title>
+      <chart>
+        <search>
+          <query>source="ssh_logs_new.json" host="LinuxNew" sourcetype="_json" event_type="Failed SSH Login"
+| top username</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>Possible Brute Force by IP Address</title>
+      <table>
+        <search>
+          <query>source="ssh_logs_new.json" host="LinuxNew" sourcetype="_json" event_type="Multiple Failed Authentication Attempts"
+| top id.orig_h</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </table>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Geo-Location Visualization ==================== -->
+  <row>
+    <panel>
+      <title>Brute Force attack with geo-location</title>
+      <map>
+        <search>
+          <query>source="ssh_logs_new.json" host="LinuxNew" sourcetype="_json" event_type="Multiple Failed Authentication Attempts"
+| table id.orig_h
+| iplocation id.orig_h
+| stats count by Country
+| geom geo_countries featureIdField="Country"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="mapping.type">choropleth</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+      </map>
+    </panel>
+  </row>
+
+</form>

@@ -1,0 +1,118 @@
+<form>
+  <label>Web Traffic Analysis Dashboard</label>
+  <description>SOC Analyst Dashboard — Apache Web Traffic Monitoring &amp; Analysis</description>
+
+  <!-- ==================== INPUT: Time Range ==================== -->
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: Web Activities ==================== -->
+  <row>
+    <panel>
+      <title>Total Web Requests</title>
+      <single>
+        <search>
+          <query>source="apache_mixed_access_full (1).json" host="webserver" sourcetype="_json"
+| stats count AS "Total Web Requests"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Successful Responses</title>
+      <single>
+        <search>
+          <query>source="apache_mixed_access_full (1).json" host="webserver" sourcetype="_json" method=GET status=200
+| stats count AS "Successful Responses"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Client Errors</title>
+      <single>
+        <search>
+          <query>source="apache_mixed_access_full (1).json" host="webserver" sourcetype="_json"
+| where status&gt;=400 AND status&lt;500
+| stats count AS "Client Errors"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Server Errors (5xx)</title>
+      <single>
+        <search>
+          <query>source="apache_mixed_access_full (1).json" host="webserver" sourcetype="_json"
+| where status&gt;=500
+| stats count AS "Server Errors"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: Web Stats ==================== -->
+  <row>
+    <panel>
+      <title>Top Requested URIs</title>
+      <chart>
+        <search>
+          <query>source="apache_mixed_access_full (1).json" host="webserver" sourcetype="_json"
+| stats count AS "Hits" by uri</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>Top Users by IP Address</title>
+      <chart>
+        <search>
+          <query>source="apache_mixed_access_full (1).json" host="webserver" sourcetype="_json"
+| stats count AS IP by ip</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Geo-Location Visualization ==================== -->
+  <row>
+    <panel>
+      <title>Web Traffic by Client IP Addresses</title>
+      <map>
+        <search>
+          <query>source="apache_mixed_access_full (1).json" host="webserver" sourcetype="_json" method=GET
+| table ip
+| iplocation ip
+| stats count by Country
+| geom geo_countries featureIdField="Country"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="mapping.type">choropleth</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+      </map>
+    </panel>
+  </row>
+
+</form>
