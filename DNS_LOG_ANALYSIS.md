@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=180&section=header&text=DNS%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=DNS | DGA | NXDOMAIN | C2&descSize=14&descAlignY=55&descColor=4FC3F7" width="100%" />
+
 <div align="center">
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&duration=3000&pause=1000&color=4FC3F7&center=true&vCenter=true&multiline=true&repeat=true&width=800&height=100&lines=%F0%9F%8C%90+Splunk+SIEM+Dashboard;DNS+Log+Analysis+%7C+Threat+Detection" alt="Typing SVG" />
@@ -390,3 +392,11 @@ splunk-soc-project/
 ![Views](https://komarev.com/ghpvc/?username=aksingh-splunk-dns&label=Views&color=4FC3F7&style=flat-square)
 
 </div>
+
+<div align="center">
+
+[![Back to Main README](https://img.shields.io/badge/%E2%AC%85_Back_to_Main_README-000000?style=for-the-badge)](README.md)
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=80&section=footer" width="100%" />

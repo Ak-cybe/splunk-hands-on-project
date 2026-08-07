@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,8,14,20,26&height=180&section=header&text=AWS%20GuardDuty%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=AWS | GuardDuty | MITRE ATT%26CK | S3&descSize=14&descAlignY=55&descColor=FF9900" width="100%" />
+
 <div align="center">
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&duration=3000&pause=1000&color=FF9900&center=true&vCenter=true&multiline=true&repeat=true&width=800&height=100&lines=%E2%98%81%EF%B8%8F+Splunk+SIEM+%2B+AWS+Cloud;GuardDuty+Threat+Detection+%7C+S3+%E2%9E%A1%EF%B8%8F+Splunk" alt="Typing SVG" />
@@ -478,3 +480,11 @@ splunk-soc-project/
 ![Views](https://komarev.com/ghpvc/?username=aksingh-splunk-guardduty&label=Views&color=FF9900&style=flat-square)
 
 </div>
+
+<div align="center">
+
+[![Back to Main README](https://img.shields.io/badge/%E2%AC%85_Back_to_Main_README-000000?style=for-the-badge)](README.md)
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,8,14,20,26&height=80&section=footer" width="100%" />

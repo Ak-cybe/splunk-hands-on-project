@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,6,11,17,24&height=180&section=header&text=SMTP%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=SMTP | Phishing | Email Security&descSize=14&descAlignY=55&descColor=FF7043" width="100%" />
+
 <div align="center">
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&duration=3000&pause=1000&color=FF7043&center=true&vCenter=true&multiline=true&repeat=true&width=800&height=100&lines=%F0%9F%93%A7+Splunk+SIEM+Dashboard;SMTP+Log+Analysis+%7C+Phishing+Detection" alt="Typing SVG" />
@@ -296,3 +298,11 @@ splunk-soc-project/
 ![Views](https://komarev.com/ghpvc/?username=aksingh-splunk-smtp&label=Views&color=FF7043&style=flat-square)
 
 </div>
+
+<div align="center">
+
+[![Back to Main README](https://img.shields.io/badge/%E2%AC%85_Back_to_Main_README-000000?style=for-the-badge)](README.md)
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,6,11,17,24&height=80&section=footer" width="100%" />

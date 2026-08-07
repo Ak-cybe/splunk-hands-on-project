@@ -316,10 +316,15 @@ splunk-soc-project/
 
 ## <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="30"> Contributing
 
-This is an educational project. Feel free to:
-- ⭐ **Star** this repo if it helped you
-- 🍴 **Fork** and build your own dashboards
-- 📬 **Open an issue** for suggestions or corrections
+We welcome contributions! Read the full guide: **[`CONTRIBUTING.md`](CONTRIBUTING.md)**
+
+| Action | How |
+|--------|-----|
+| ⭐ **Star** | Show your support — helps others discover this project |
+| 🍴 **Fork** | Clone and build your own dashboards |
+| � **Report Bug** | [Open an Issue](https://github.com/Ak-cybe/splunk-hands-on-project/issues/new) |
+| 💡 **Suggest Feature** | Request a new dashboard or analysis module |
+| 🔒 **Security** | Report vulnerabilities via [`SECURITY.md`](SECURITY.md) |
 
 <div align="center">
 
