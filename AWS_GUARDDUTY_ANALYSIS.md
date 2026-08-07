@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,8,14,20,26&height=180&section=header&text=AWS%20GuardDuty%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=AWS%20%7C%20GuardDuty%20%7C%20MITRE%20ATT%26CK%20%7C%20S3&descSize=14&descAlignY=55&descColor=FF9900" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,8,14,20,26&height=180&section=header&text=AWS%20GuardDuty%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=AWS%20%7C%20GuardDuty%20%7C%20MITRE%20ATT%2526CK%20%7C%20S3&descSize=14&descAlignY=55&descColor=FF9900" width="100%" />
 
 <div align="center">
 
