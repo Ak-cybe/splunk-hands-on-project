@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=200&section=header&text=%F0%9F%9B%A1%EF%B8%8F%20Splunk%20SIEM%20%E2%80%94%20SOC%20Analyst%20Lab&fontSize=36&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=SSH%20%7C%20Web%20%7C%20DNS%20%7C%20FTP%20%7C%20SMTP%20%7C%20DHCP%20%7C%20Tunnel%20%7C%20AWS%20GuardDuty&descSize=16&descAlignY=55&descColor=00F5FF" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=200&section=header&text=Splunk%20SIEM%20-%20SOC%20Analyst%20Lab&fontSize=36&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=SSH%20%7C%20Web%20%7C%20DNS%20%7C%20FTP%20%7C%20SMTP%20%7C%20DHCP%20%7C%20Tunnel%20%7C%20AWS%20GuardDuty&descSize=16&descAlignY=55&descColor=00F5FF" width="100%" />
 
 <div align="center">
 
