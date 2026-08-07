@@ -353,6 +353,17 @@ We welcome contributions! Read the full guide: **[`CONTRIBUTING.md`](CONTRIBUTIN
 <br/><br/>
 
 </div>
+👤 About the owner
+
+🔒 **[Amresh Kumar](https://github.com/Ak-cybe)**
+
+🎓 BCA Student | Cybersecurity & Ethical Hacking Enthusiast
+
+☁️ AWS Cloud Security | 🤖 AI in Security
+
+🎯 Building Practical SOC & AI Security Skills Through Detection
+
+💡 Building automated SOC workflows that turn hours of manual triage into seconds of machine precision
 
 > 📢 **We provide FREE & Premium IT learning resources** — cybersecurity PDFs, AI tools, coding projects, cloud computing materials, networking labs, desktop support notes, interview preparation content, practical tutorials, and career-focused tech education to help students and beginners build real-world IT skills.
 
