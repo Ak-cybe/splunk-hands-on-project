@@ -1,6 +1,12 @@
 <div align="center">
 
+<img src="https://media.giphy.com/media/077i6AULCXc0FKTj9s/giphy.gif" width="100" />
+
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=32&duration=3000&pause=1000&color=00F5FF&center=true&vCenter=true&multiline=true&repeat=true&width=900&height=120&lines=%F0%9F%9B%A1%EF%B8%8F+Splunk+SIEM+%E2%80%94+SOC+Analyst+Lab;8+Dashboards+%7C+Threat+Detection+%7C+Cloud+Security" alt="Typing SVG" />
+
+<img src="https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif" alt="Coder GIF" width="400">
+
+<br/>
 
 ![Splunk](https://img.shields.io/badge/Splunk-000000?style=for-the-badge&logo=splunk&logoColor=white)
 ![SIEM](https://img.shields.io/badge/SIEM-Dashboard-blue?style=for-the-badge)
@@ -17,11 +23,18 @@
 
 **A comprehensive SIEM lab portfolio with 8 Splunk dashboards covering SSH, Web Traffic, DNS, FTP, SMTP, DHCP, Tunnel, and AWS GuardDuty cloud threat analysis — built with SPL queries, importable XML, and geo-location threat intelligence.**
 
+<br/>
+
+<img src="https://img.shields.io/badge/📊_Total_Events-8,701-00F5FF?style=for-the-badge" />
+<img src="https://img.shields.io/badge/🖥️_Dashboards-8-FF6B6B?style=for-the-badge" />
+<img src="https://img.shields.io/badge/📝_Lab_Guides-8-66BB6A?style=for-the-badge" />
+<img src="https://img.shields.io/badge/☁️_Cloud-AWS_GuardDuty-FF9900?style=for-the-badge" />
+
 </div>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-## 🎯 What This Project Covers
+## <img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="30"> What This Project Covers
 
 This repository contains **8 complete Splunk SIEM dashboards** built from scratch — each with a step-by-step lab guide, SPL queries, importable XML, and real log data.
 
@@ -38,7 +51,7 @@ This repository contains **8 complete Splunk SIEM dashboards** built from scratc
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-## 📸 Dashboard Previews
+## <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" width="30"> Dashboard Previews
 
 ### 🛡️ SSH Log Analysis Dashboard
 
@@ -144,7 +157,7 @@ This repository contains **8 complete Splunk SIEM dashboards** built from scratc
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-## 📂 Project Structure
+## <img src="https://media.giphy.com/media/fwbZnTftCXVocKzfxR/giphy.gif" width="30"> Project Structure
 
 ```
 splunk-soc-project/
@@ -192,7 +205,7 @@ splunk-soc-project/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-## 🔧 Prerequisites
+## <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="25"> Prerequisites
 
 | Requirement | Details |
 |-------------|---------|
@@ -202,7 +215,7 @@ splunk-soc-project/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-## 📊 Data Sources Overview
+## <img src="https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif" width="30"> Data Sources Overview
 
 ### SSH Logs (`ssh_logs_new.json`) — 1,201 events
 
@@ -280,7 +293,7 @@ splunk-soc-project/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-## 🗺️ Roadmap
+## <img src="https://media.giphy.com/media/j2pOGeGYKe2xCCKwfi/giphy.gif" width="30"> Roadmap
 
 - [x] SSH Log Analysis Dashboard + Guide
 - [x] Web Traffic Analysis Dashboard + Guide
@@ -299,12 +312,20 @@ splunk-soc-project/
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-## 🤝 Contributing
+## <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="30"> Contributing
 
 This is an educational project. Feel free to:
 - ⭐ **Star** this repo if it helped you
 - 🍴 **Fork** and build your own dashboards
 - 📬 **Open an issue** for suggestions or corrections
+
+<div align="center">
+
+### If you found this helpful, please consider giving it a ⭐!
+
+<img src="https://media.giphy.com/media/dWesBcTLavkZuG35MI/giphy.gif" width="400" />
+
+</div>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -357,10 +378,40 @@ This is an educational project. Feel free to:
 
 <div align="center">
 
+### 💀 Threat Coverage Matrix
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    MITRE ATT&CK Coverage                       │
+├──────────────────┬──────────────────┬───────────────────────────┤
+│ 🔍 Reconnaissance│ 🚪 Initial Access│ 🔑 Credential Access      │
+│   DNS, Tunnel    │  SSH, GuardDuty  │  SSH, FTP, IAM            │
+├──────────────────┼──────────────────┼───────────────────────────┤
+│ 📤 Exfiltration  │ 💣 Impact        │ 🕵️ Command & Control       │
+│  FTP, S3, SMTP   │  GuardDuty       │  DNS, Tunnel              │
+├──────────────────┼──────────────────┼───────────────────────────┤
+│ 🔄 Persistence   │ ⬆️ Priv Escalation│ 🛡️ Defense Evasion       │
+│  DHCP, IAM       │  GuardDuty       │  Tunnel, GuardDuty        │
+└──────────────────┴──────────────────┴───────────────────────────┘
+```
+
+</div>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="60" />
+
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&duration=4000&pause=1000&color=00F5FF&center=true&vCenter=true&repeat=true&width=500&lines=Built+with+%E2%9D%A4%EF%B8%8F+by+Amresh+Kumar;SOC+Analyst+Portfolio+%7C+August+2026;8+Dashboards+%7C+8%2C701+Events+%7C+Cloud+%2B+On-Prem" alt="Footer" />
 
 ![Views](https://komarev.com/ghpvc/?username=amresh-splunk-soc&label=Profile+Views&color=00f5ff&style=flat-square)
+![Stars](https://img.shields.io/github/stars/Ak-cybe/splunk-hands-on-project?style=flat-square&color=00F5FF)
+![Forks](https://img.shields.io/github/forks/Ak-cybe/splunk-hands-on-project?style=flat-square&color=FF6B6B)
+![Last Commit](https://img.shields.io/github/last-commit/Ak-cybe/splunk-hands-on-project?style=flat-square&color=66BB6A)
 
 **📜 License:** Educational Use
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=80&section=footer" width="100%" />
 
 </div>
