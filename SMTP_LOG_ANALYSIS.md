@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,6,11,17,24&height=180&section=header&text=SMTP%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=SMTP | Phishing | Email Security&descSize=14&descAlignY=55&descColor=FF7043" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,6,11,17,24&height=180&section=header&text=SMTP%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=SMTP%20%7C%20Phishing%20%7C%20Email%20Security&descSize=14&descAlignY=55&descColor=FF7043" width="100%" />
 
 <div align="center">
 

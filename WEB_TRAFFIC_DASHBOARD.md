@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,11,20,25,30&height=180&section=header&text=Web%20Traffic%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Apache | HTTP | Status Codes&descSize=14&descAlignY=55&descColor=F7DF1E" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,11,20,25,30&height=180&section=header&text=Web%20Traffic%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Apache%20%7C%20HTTP%20%7C%20Status%20Codes&descSize=14&descAlignY=55&descColor=F7DF1E" width="100%" />
 
 <div align="center">
 

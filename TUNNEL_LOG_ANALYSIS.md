@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,8,14,20,26&height=180&section=header&text=Tunnel%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Tunnel | Covert Channel | GRE | Teredo&descSize=14&descAlignY=55&descColor=FFA726" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,8,14,20,26&height=180&section=header&text=Tunnel%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Tunnel%20%7C%20Covert%20Channel%20%7C%20GRE%20%7C%20Teredo&descSize=14&descAlignY=55&descColor=FFA726" width="100%" />
 
 <div align="center">
 

@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=180&section=header&text=DNS%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=DNS | DGA | NXDOMAIN | C2&descSize=14&descAlignY=55&descColor=4FC3F7" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=180&section=header&text=DNS%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=DNS%20%7C%20DGA%20%7C%20NXDOMAIN%20%7C%20C2&descSize=14&descAlignY=55&descColor=4FC3F7" width="100%" />
 
 <div align="center">
 

@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=3,10,16,22,28&height=180&section=header&text=FTP%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=FTP | File Transfer | Monitoring&descSize=14&descAlignY=55&descColor=66BB6A" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=3,10,16,22,28&height=180&section=header&text=FTP%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=FTP%20%7C%20File%20Transfer%20%7C%20Monitoring&descSize=14&descAlignY=55&descColor=66BB6A" width="100%" />
 
 <div align="center">
 

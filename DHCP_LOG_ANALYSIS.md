@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,8,14,20,26&height=180&section=header&text=DHCP%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=DHCP | Rogue Device | Asset Discovery&descSize=14&descAlignY=55&descColor=AB47BC" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,8,14,20,26&height=180&section=header&text=DHCP%20Log%20Analysis&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=DHCP%20%7C%20Rogue%20Device%20%7C%20Asset%20Discovery&descSize=14&descAlignY=55&descColor=AB47BC" width="100%" />
 
 <div align="center">
 
