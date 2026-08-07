@@ -1,0 +1,23 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temp/generated
+*.tmp
+*.bak
+*.log
+generate_*.ps1
+
+# Archives (original zips, keep data/ JSONs)
+*.zip
+
+# Dropbox conflicts
+*conflicted*

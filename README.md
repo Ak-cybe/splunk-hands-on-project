@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=200&section=header&text=%F0%9F%9B%A1%EF%B8%8F%20Splunk%20SIEM%20%E2%80%94%20SOC%20Analyst%20Lab&fontSize=36&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=SSH%20%7C%20Web%20%7C%20DNS%20%7C%20FTP%20%7C%20SMTP%20%7C%20DHCP%20%7C%20Tunnel%20%7C%20AWS%20GuardDuty&descSize=16&descAlignY=55&descColor=00F5FF" width="100%" />
+
 <div align="center">
 
 <img src="https://media.giphy.com/media/077i6AULCXc0FKTj9s/giphy.gif" width="100" />
@@ -409,8 +411,10 @@ This is an educational project. Feel free to:
 ![Stars](https://img.shields.io/github/stars/Ak-cybe/splunk-hands-on-project?style=flat-square&color=00F5FF)
 ![Forks](https://img.shields.io/github/forks/Ak-cybe/splunk-hands-on-project?style=flat-square&color=FF6B6B)
 ![Last Commit](https://img.shields.io/github/last-commit/Ak-cybe/splunk-hands-on-project?style=flat-square&color=66BB6A)
+![License](https://img.shields.io/github/license/Ak-cybe/splunk-hands-on-project?style=flat-square&color=AB47BC)
+![Repo Size](https://img.shields.io/github/repo-size/Ak-cybe/splunk-hands-on-project?style=flat-square&color=FFA726)
 
-**📜 License:** Educational Use
+**📜 License:** [MIT](LICENSE) — Free to use, modify, and share
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,19,24,30&height=80&section=footer" width="100%" />
 
