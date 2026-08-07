@@ -1,0 +1,131 @@
+<form>
+  <label>FTP Log Analysis Dashboard</label>
+  <description>SOC Analyst Dashboard — FTP File Transfer Monitoring &amp; Anomaly Detection</description>
+
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: FTP Overview ==================== -->
+  <row>
+    <panel>
+      <title>Total FTP Events</title>
+      <single>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json"
+| stats count AS "Total FTP Events"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Successful Transfers</title>
+      <single>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json" success="true"
+| stats count AS "Successful Transfers"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Failed Operations</title>
+      <single>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json" success="false"
+| stats count AS "Failed Operations"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Suspicious Activity</title>
+      <single>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json" classification="Suspicious"
+| stats count AS "Suspicious Activity"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: FTP Activity Patterns ==================== -->
+  <row>
+    <panel>
+      <title>Top FTP Users</title>
+      <chart>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json"
+| top limit=10 user</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>FTP Command Distribution</title>
+      <chart>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json"
+| stats count by command</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Threat Detection ==================== -->
+  <row>
+    <panel>
+      <title>Suspicious File Transfers</title>
+      <table>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json" classification="Suspicious"
+| table ts, id.orig_h, user, command, arg, reply_msg
+| sort -ts</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </table>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 4: Geo-Location ==================== -->
+  <row>
+    <panel>
+      <title>FTP Access by Source Country</title>
+      <map>
+        <search>
+          <query>source="ftp_logs.json" host="FTPServer" sourcetype="_json"
+| table id.orig_h
+| iplocation id.orig_h
+| stats count by Country
+| geom geo_countries featureIdField="Country"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="mapping.type">choropleth</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+      </map>
+    </panel>
+  </row>
+
+</form>

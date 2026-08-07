@@ -1,0 +1,160 @@
+<form>
+  <label>AWS GuardDuty Cloud Threat Dashboard</label>
+  <description>SOC Analyst Dashboard — AWS Cloud Threat Detection &amp; MITRE ATT&amp;CK Mapping</description>
+
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: Cloud Threat Overview ==================== -->
+  <row>
+    <panel>
+      <title>Total Findings</title>
+      <single>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json"
+| stats count AS "Total Findings"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>🔴 High Severity (≥7)</title>
+      <single>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json" severityLabel="HIGH"
+| stats count AS "High Severity"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>🟡 Medium Severity</title>
+      <single>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json" severityLabel="MEDIUM"
+| stats count AS "Medium Severity"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>🟢 Low Severity</title>
+      <single>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json" severityLabel="LOW"
+| stats count AS "Low Severity"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: Threat Analysis ==================== -->
+  <row>
+    <panel>
+      <title>Finding Types Distribution</title>
+      <chart>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json"
+| top limit=10 type</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>MITRE ATT&amp;CK Tactics</title>
+      <chart>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json"
+| stats count by tactic</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Affected Resources ==================== -->
+  <row>
+    <panel>
+      <title>Top Affected EC2 Instances</title>
+      <chart>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json" resourceType="EC2"
+| top limit=10 instanceId</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>Compromised IAM Users</title>
+      <chart>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json" resourceType="IAMUser"
+| top limit=10 iamUser</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 4: High Severity Detail ==================== -->
+  <row>
+    <panel>
+      <title>🔴 High Severity Findings Detail</title>
+      <table>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json" severityLabel="HIGH"
+| table ts, type, severity, tactic, resourceType, instanceId, iamUser, sourceIP, sourceCountry, region
+| sort -severity, -ts</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </table>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 5: Geo-Location ==================== -->
+  <row>
+    <panel>
+      <title>Threat Source Countries</title>
+      <map>
+        <search>
+          <query>source="guardduty_findings.json" host="AWSGuardDuty" sourcetype="_json"
+| table id.orig_h
+| iplocation id.orig_h
+| stats count by Country
+| geom geo_countries featureIdField="Country"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="mapping.type">choropleth</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+      </map>
+    </panel>
+  </row>
+
+</form>

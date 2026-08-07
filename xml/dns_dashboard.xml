@@ -1,0 +1,112 @@
+<form>
+  <label>DNS Log Analysis Dashboard</label>
+  <description>SOC Analyst Dashboard — DNS Query Monitoring &amp; Threat Detection</description>
+
+  <!-- ==================== INPUT: Time Range ==================== -->
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: DNS Overview ==================== -->
+  <row>
+    <panel>
+      <title>Total DNS Queries</title>
+      <single>
+        <search>
+          <query>source="dns_logs.json" host="DNSServer" sourcetype="_json"
+| stats count AS "Total DNS Queries"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Successful Resolutions</title>
+      <single>
+        <search>
+          <query>source="dns_logs.json" host="DNSServer" sourcetype="_json" rcode_name="NOERROR"
+| stats count AS "Successful Resolutions"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>NXDOMAIN Responses</title>
+      <single>
+        <search>
+          <query>source="dns_logs.json" host="DNSServer" sourcetype="_json" rcode_name="NXDOMAIN"
+| stats count AS "NXDOMAIN Responses"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Suspicious Queries</title>
+      <single>
+        <search>
+          <query>source="dns_logs.json" host="DNSServer" sourcetype="_json" classification="Suspicious"
+| stats count AS "Suspicious Queries"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: DNS Activity Patterns ==================== -->
+  <row>
+    <panel>
+      <title>Top Queried Domains</title>
+      <chart>
+        <search>
+          <query>source="dns_logs.json" host="DNSServer" sourcetype="_json"
+| top limit=10 query</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>Query Type Distribution</title>
+      <chart>
+        <search>
+          <query>source="dns_logs.json" host="DNSServer" sourcetype="_json"
+| stats count by qtype_name</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Threat Detection ==================== -->
+  <row>
+    <panel>
+      <title>Suspicious Domain Queries by Source IP</title>
+      <table>
+        <search>
+          <query>source="dns_logs.json" host="DNSServer" sourcetype="_json" classification="Suspicious"
+| stats count by id.orig_h, query
+| sort -count</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </table>
+    </panel>
+  </row>
+
+</form>

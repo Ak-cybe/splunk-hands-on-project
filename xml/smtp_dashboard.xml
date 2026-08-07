@@ -1,0 +1,131 @@
+<form>
+  <label>SMTP Log Analysis Dashboard</label>
+  <description>SOC Analyst Dashboard — Email Traffic Monitoring &amp; Phishing Detection</description>
+
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: Email Overview ==================== -->
+  <row>
+    <panel>
+      <title>Total Emails</title>
+      <single>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json"
+| stats count AS "Total Emails"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Emails with Attachments</title>
+      <single>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json" has_attachment="true"
+| stats count AS "With Attachments"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Unencrypted (No TLS)</title>
+      <single>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json" tls_version="none"
+| stats count AS "Unencrypted Emails"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Suspicious Emails</title>
+      <single>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json" classification="Suspicious"
+| stats count AS "Suspicious Emails"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: Email Patterns ==================== -->
+  <row>
+    <panel>
+      <title>Top Senders</title>
+      <chart>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json"
+| top limit=10 mailfrom</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>Attachment Types</title>
+      <chart>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json" has_attachment="true"
+| stats count by attachment_type</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Suspicious Email Detail ==================== -->
+  <row>
+    <panel>
+      <title>Suspicious Email Details</title>
+      <table>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json" classification="Suspicious"
+| table ts, id.orig_h, mailfrom, rcptto, subject, attachment_type, tls_version
+| sort -ts</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </table>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 4: Geo-Location ==================== -->
+  <row>
+    <panel>
+      <title>Email Traffic by Source Country</title>
+      <map>
+        <search>
+          <query>source="smtp_logs.json" host="MailServer" sourcetype="_json"
+| table id.orig_h
+| iplocation id.orig_h
+| stats count by Country
+| geom geo_countries featureIdField="Country"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="mapping.type">choropleth</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+      </map>
+    </panel>
+  </row>
+
+</form>

@@ -1,0 +1,111 @@
+<form>
+  <label>DHCP Log Analysis Dashboard</label>
+  <description>SOC Analyst Dashboard — DHCP IP Assignment Monitoring &amp; Rogue Device Detection</description>
+
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: DHCP Overview ==================== -->
+  <row>
+    <panel>
+      <title>Total DHCP Events</title>
+      <single>
+        <search>
+          <query>source="dhcp_logs.json" host="DHCPServer" sourcetype="_json"
+| stats count AS "Total DHCP Events"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Unique Devices</title>
+      <single>
+        <search>
+          <query>source="dhcp_logs.json" host="DHCPServer" sourcetype="_json"
+| stats dc(mac_address) AS "Unique Devices"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>IP Assignments (ACK)</title>
+      <single>
+        <search>
+          <query>source="dhcp_logs.json" host="DHCPServer" sourcetype="_json" msg_type="ACK"
+| stats count AS "IP Assignments"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Suspicious Devices</title>
+      <single>
+        <search>
+          <query>source="dhcp_logs.json" host="DHCPServer" sourcetype="_json" classification="Suspicious"
+| stats count AS "Suspicious Devices"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: DHCP Patterns ==================== -->
+  <row>
+    <panel>
+      <title>DHCP Message Type Distribution</title>
+      <chart>
+        <search>
+          <query>source="dhcp_logs.json" host="DHCPServer" sourcetype="_json"
+| stats count by msg_type</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>Top Devices by Lease Requests</title>
+      <chart>
+        <search>
+          <query>source="dhcp_logs.json" host="DHCPServer" sourcetype="_json"
+| top limit=10 hostname</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Device Inventory ==================== -->
+  <row>
+    <panel>
+      <title>Suspicious / Rogue Device Activity</title>
+      <table>
+        <search>
+          <query>source="dhcp_logs.json" host="DHCPServer" sourcetype="_json" classification="Suspicious"
+| table ts, mac_address, hostname, leased_ip, msg_type
+| sort -ts</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </table>
+    </panel>
+  </row>
+
+</form>

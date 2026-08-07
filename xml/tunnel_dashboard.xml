@@ -1,0 +1,115 @@
+<form>
+  <label>Tunnel Log Analysis Dashboard</label>
+  <description>SOC Analyst Dashboard — Network Tunnel Monitoring &amp; Anomaly Detection</description>
+
+  <fieldset submitButton="true">
+    <input type="time" token="time_range">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+
+  <!-- ==================== ROW 1: Tunnel Overview ==================== -->
+  <row>
+    <panel>
+      <title>Total Tunnel Events</title>
+      <single>
+        <search>
+          <query>source="tunnel_logs.json" host="TunnelSensor" sourcetype="_json"
+| stats count AS "Total Tunnel Events"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Tunnels Established</title>
+      <single>
+        <search>
+          <query>source="tunnel_logs.json" host="TunnelSensor" sourcetype="_json" action="tunnel_established"
+| stats count AS "Tunnels Established"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Tunnels Terminated</title>
+      <single>
+        <search>
+          <query>source="tunnel_logs.json" host="TunnelSensor" sourcetype="_json" action="tunnel_terminated"
+| stats count AS "Tunnels Terminated"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+
+    <panel>
+      <title>Suspicious Tunnels</title>
+      <single>
+        <search>
+          <query>source="tunnel_logs.json" host="TunnelSensor" sourcetype="_json" classification="Suspicious"
+| stats count AS "Suspicious Tunnels"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 2: Tunnel Patterns ==================== -->
+  <row>
+    <panel>
+      <title>Tunnel Protocol Distribution</title>
+      <chart>
+        <search>
+          <query>source="tunnel_logs.json" host="TunnelSensor" sourcetype="_json"
+| stats count by tunnel_type</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+      </chart>
+    </panel>
+
+    <panel>
+      <title>Top Tunnel Sources by IP</title>
+      <chart>
+        <search>
+          <query>source="tunnel_logs.json" host="TunnelSensor" sourcetype="_json"
+| top limit=10 id.orig_h</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ==================== ROW 3: Geo-Location ==================== -->
+  <row>
+    <panel>
+      <title>Tunnel Traffic by Source Country</title>
+      <map>
+        <search>
+          <query>source="tunnel_logs.json" host="TunnelSensor" sourcetype="_json"
+| table id.orig_h
+| iplocation id.orig_h
+| stats count by Country
+| geom geo_countries featureIdField="Country"</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="mapping.type">choropleth</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+      </map>
+    </panel>
+  </row>
+
+</form>
