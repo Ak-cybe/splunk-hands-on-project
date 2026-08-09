@@ -357,7 +357,7 @@ We welcome contributions! Read the full guide: **[`CONTRIBUTING.md`](CONTRIBUTIN
 
 🔒 **[Amresh Kumar](https://github.com/Ak-cybe)**
 
-🎓 BCA Student | Cybersecurity & Ethical Hacking Enthusiast
+🎓 BCA final years student | Cybersecurity & Ethical Hacking Enthusiast
 
 ☁️ AWS Cloud Security | 🤖 AI in Security
 
